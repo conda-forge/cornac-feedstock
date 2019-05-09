@@ -18,12 +18,17 @@ requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+    - llvm-openmp  # [osx]
   host:
+    - {{ mpi }}
+    - llvm-openmp  # [osx]
     - python
     - pip
     - cython
-    - numpy 1.11
+    - numpy
   run:
+    - {{ mpi }}
+    - llvm-openmp  # [osx]
     - python
     - {{ pin_compatible('numpy') }}
     - scipy
