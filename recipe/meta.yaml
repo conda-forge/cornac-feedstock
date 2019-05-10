@@ -1,52 +1,20 @@
 {% set name = "cornac" %}
 {% set version = "0.2.0" %}
+{% set sha256 = "9fe801c4c72a79a48eed383ef34e9b39386f867c6feaf2e4caccaf55bb14fe7a" %}
 {% set build = 1000 %}
 
-# recipe-lint fails if mpi is undefined
-{% set mpi = mpi or 'nompi' %}
-{% if mpi == "nompi" %}
-# prioritize nompi via build number
-{% set build = build + 100 %}
-{% endif %}
 
 package:
-  name: "{{ name|lower }}"
-  version: "{{ version }}"
+  name: {{ name|lower }}
+  version: {{ version }}
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 9fe801c4c72a79a48eed383ef34e9b39386f867c6feaf2e4caccaf55bb14fe7a 
+  sha256: {{ sha256 }}
 
 build:
   skip: True  # [py<35]
   number: {{ build }}
-
-  {% if mpi != "nompi" %}
-  {% set mpi_prefix = "mpi_" + mpi %}
-  {% else %}
-  {% set mpi_prefix = "nompi" %}
-  {% endif %}
-  # add build string so packages can depend on
-  # mpi or nompi variants
-  # dependencies:
-  # `cornac * mpi_mpich_*` for mpich
-  # `cornac * mpi_*` for any mpi
-  # `cornac * nompi_*` for no mpi
-  string: "{{ mpi_prefix }}_h{{ PKG_HASH }}_{{ build }}"
-
-  # mpi builds require the right mpi
-  # non-mpi builds *do not* appear to require non-mpi builds
-  # at least not always
-
-  {% if mpi != 'nompi' %}
-  {% set build_pin = mpi_prefix + '_*' %}
-  {% else %}
-  {% set build_pin = '' %}
-  {% endif %}
-
-  run_exports:
-    - {{ pin_subpackage('cornac', max_pin='x.x.x') }} {{ build_pin }}
-
   script: "{{ PYTHON }} -m pip install . -vv"
 
 requirements:
@@ -55,14 +23,12 @@ requirements:
     - {{ compiler('cxx') }}
     - llvm-openmp  # [osx]
   host:
-    - {{ mpi }}  # [mpi != 'nompi']
     - llvm-openmp  # [osx]
     - python
     - pip
     - cython
     - numpy
   run:
-    - {{ mpi }}  # [mpi != 'nompi']
     - llvm-openmp  # [osx]
     - python
     - {{ pin_compatible('numpy') }}
