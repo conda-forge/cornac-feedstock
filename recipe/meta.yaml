@@ -1,6 +1,6 @@
 {% set name = "cornac" %}
-{% set version = "0.3.0" %}
-{% set sha256 = "c6abf5b20cb6c4a818fc34cf6b39984b319c2c302236ef13dba3936a8f7caa04" %}
+{% set version = "0.3.1" %}
+{% set sha256 = "524788c5fa932223c790a5e1a273588cb425850e71b4582a0dc2a05307f27004" %}
 {% set build = 0 %}
 
 
