@@ -1,6 +1,6 @@
 {% set name = "cornac" %}
-{% set version = "1.4.1" %}
-{% set sha256 = "13761f0b2651d23361de29e907a2151c16556da849397fe7ccc83d17f256be8f" %}
+{% set version = "1.5.0" %}
+{% set sha256 = "e133451234dd1518108a0b7219817473095f192ed6ffebef9c8bb17bcc892211" %}
 {% set build = 0 %}
 
 
@@ -13,9 +13,9 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  skip: True  # [py<35]
+  skip: true  # [py<35]
   number: {{ build }}
-  script: "{{ PYTHON }} -m pip install . -vv"
+  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   build:
@@ -41,12 +41,12 @@ test:
 
 about:
   home: https://cornac.preferred.ai/
-  license: Apache-2.0 
-  license_file: "LICENSE" 
+  license: Apache-2.0
+  license_file: LICENSE
   summary: A collection of recommendation algorithms and comparisons
   doc_url: https://cornac.readthedocs.io/en/latest/
   dev_url: https://github.com/PreferredAI/cornac
 
 extra:
   recipe-maintainers:
-    - tqtg 
+    - tqtg
