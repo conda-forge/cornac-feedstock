@@ -34,7 +34,6 @@ requirements:
     - {{ pin_compatible('numpy') }}
     - scipy
     - tqdm
-    - powerlaw
 
 test:
   imports:
