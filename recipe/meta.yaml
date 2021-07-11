@@ -1,6 +1,6 @@
 {% set name = "cornac" %}
-{% set version = "1.13.0" %}
-{% set sha256 = "120254326ecc208d4193ab2940bdc6e62ff6b4112a2829e351707cae7cd76a12" %}
+{% set version = "1.13.1" %}
+{% set sha256 = "11823d925704e3ed2d2922c82365c2e8154adb4789329820b6700acf8ceca915" %}
 {% set build = 0 %}
 
 
@@ -44,7 +44,7 @@ about:
   home: https://cornac.preferred.ai/
   license: Apache-2.0
   license_file: LICENSE
-  summary: A collection of recommendation algorithms and comparisons
+  summary: A Comparative Framework for Multimodal Recommender Systems
   doc_url: https://cornac.readthedocs.io/en/latest/
   dev_url: https://github.com/PreferredAI/cornac
 
