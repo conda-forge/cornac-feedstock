@@ -7,7 +7,7 @@ Package license: Apache-2.0
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/cornac-feedstock/blob/master/LICENSE.txt)
 
-Summary: A Comparative Framework for Multimodal Recommender Systems
+Summary: A collection of recommendation algorithms and comparisons
 
 Development: https://github.com/PreferredAI/cornac
 
