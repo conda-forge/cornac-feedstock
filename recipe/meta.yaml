@@ -44,7 +44,7 @@ about:
   home: https://cornac.preferred.ai/
   license: Apache-2.0
   license_file: LICENSE
-  summary: A collection of recommendation algorithms and comparisons
+  summary: A Comparative Framework for Multimodal Recommender Systems
   doc_url: https://cornac.readthedocs.io/en/latest/
   dev_url: https://github.com/PreferredAI/cornac
 
