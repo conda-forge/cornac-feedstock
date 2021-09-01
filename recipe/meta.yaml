@@ -32,7 +32,7 @@ requirements:
     - llvm-openmp  # [osx]
     - python
     - {{ pin_compatible('numpy') }}
-    - scipy
+    - {{ pin_compatible('scipy') }}
     - tqdm
     - powerlaw
 
