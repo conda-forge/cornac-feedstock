@@ -28,11 +28,13 @@ requirements:
     - pip
     - cython
     - numpy
+    # some models cimports scipy.linalg.cython_blas
+    - scipy
   run:
     - llvm-openmp  # [osx]
     - python
     - {{ pin_compatible('numpy') }}
-    - scipy
+    - {{ pin_compatible('scipy') }}
     - tqdm
     - powerlaw
 
