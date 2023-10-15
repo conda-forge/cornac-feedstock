@@ -1,7 +1,7 @@
 {% set name = "cornac" %}
 {% set version = "1.16.0" %}
 {% set sha256 = "6c2da5e42fbd0a9c4f304bb415d5694c23c625a1bee5b892bc80d50e28634b9c" %}
-{% set build = 0 %}
+{% set build = 1 %}
 
 
 package:
