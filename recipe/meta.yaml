@@ -19,28 +19,30 @@ build:
 
 requirements:
   build:
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
-    - llvm-openmp  # [osx]
     - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - cython                                 # [build_platform != target_platform]
     - numpy                                  # [build_platform != target_platform]
-  host:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
     - llvm-openmp  # [osx]
+  host:
     - python
-    - pip
     - cython
+    - pip
+    - setuptools
     - numpy
     # some models cimports scipy.linalg.cython_blas
     - scipy
-  run:
     - llvm-openmp  # [osx]
+  run:
     - python
+    - setuptools
     - {{ pin_compatible('numpy') }}
     - {{ pin_compatible('scipy') }}
     - tqdm
     - powerlaw
+    - llvm-openmp  # [osx]
 
 test:
   imports:
