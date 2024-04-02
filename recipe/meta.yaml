@@ -1,7 +1,7 @@
 {% set name = "cornac" %}
 {% set version = "2.1.0" %}
 {% set sha256 = "803a188c61fdb6cc23c06149ea89c0ddacbe011546e7b17b8fec43b91ab29614" %}
-{% set build = 0 %}
+{% set build = 1 %}
 
 
 package:
@@ -13,26 +13,33 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  skip: true  # [py<35]
+  skip: true  # [py<38]
   number: {{ build }}
-  script: {{ PYTHON }} -m pip install . -vv
+  script: 
+    - {{ PYTHON }} setup.py build_ext -j{{ CPU_COUNT }}
+    - {{ PYTHON }} -m pip install . -vv
 
 requirements:
   build:
+    - python                                 # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
+    - cython                                 # [build_platform != target_platform]
+    - numpy                                  # [build_platform != target_platform]
+    - scipy                                  # [build_platform != target_platform]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - llvm-openmp  # [osx]
   host:
-    - llvm-openmp  # [osx]
     - python
-    - pip
     - cython
+    - pip
+    - setuptools
     - numpy
     # some models cimports scipy.linalg.cython_blas
     - scipy
   run:
-    - llvm-openmp  # [osx]
     - python
+    - setuptools
     - {{ pin_compatible('numpy') }}
     - {{ pin_compatible('scipy') }}
     - tqdm
