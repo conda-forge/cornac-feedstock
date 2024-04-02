@@ -22,6 +22,8 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - llvm-openmp  # [osx]
+    - python
+    - cython
   host:
     - llvm-openmp  # [osx]
     - python
