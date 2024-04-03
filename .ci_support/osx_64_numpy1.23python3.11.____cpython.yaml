@@ -4,6 +4,13 @@ c_compiler:
 - clang
 c_compiler_version:
 - '16'
+<<<<<<< HEAD
+=======
+c_stdlib:
+- macosx_deployment_target
+c_stdlib_version:
+- '10.9'
+>>>>>>> main
 channel_sources:
 - conda-forge
 channel_targets:
