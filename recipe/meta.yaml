@@ -1,7 +1,7 @@
 {% set name = "cornac" %}
-{% set version = "2.1.0" %}
-{% set sha256 = "803a188c61fdb6cc23c06149ea89c0ddacbe011546e7b17b8fec43b91ab29614" %}
-{% set build = 3 %}
+{% set version = "2.2.0" %}
+{% set sha256 = "4f97605837a122d7fbfdd00b7efd8ed1c12c3732311133f80e9aedb77c956d1f" %}
+{% set build = 0 %}
 
 
 package:
@@ -15,7 +15,7 @@ source:
 build:
   skip: true  # [py<38]
   number: {{ build }}
-  script: 
+  script:
     - {{ PYTHON }} setup.py build_ext -j{{ CPU_COUNT }}
     - {{ PYTHON }} -m pip install . -vv
 
@@ -27,6 +27,7 @@ requirements:
     - numpy                                  # [build_platform != target_platform]
     - scipy                                  # [build_platform != target_platform]
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
     - llvm-openmp  # [osx]
   host:
